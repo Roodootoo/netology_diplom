@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% load socialaccount %}
+
+<h1>Log in</h1>
+
+{% if user.is_authenticated %}
+    <p>Welcome {{ user.username }} !!!</p>
+    <a href="{% url 'account_logout' %}">Logout</a>
+{% else %}
+    <a href="{% provider_login_url 'vk' %}">Sign In with Vk</a><br>
+    <a href="{% provider_login_url 'github' %}">Sign In with Github</a>
+{% endif %}
+</body>
+</html>
